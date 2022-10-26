@@ -1,13 +1,15 @@
-![TensorFlow Requirement: 1.x](https://img.shields.io/badge/TensorFlow%20Requirement-1.x-brightgreen)
-![TensorFlow 2 Not Supported](https://img.shields.io/badge/TensorFlow%202%20Not%20Supported-%E2%9C%95-red.svg)
+![TensorFlow Requirement: 2.x](https://img.shields.io/badge/TensorFlow%20Requirement-1.x-brightgreen)
+![TensorFlow 1 Not Supported](https://img.shields.io/badge/TensorFlow%202%20Not%20Supported-%E2%9C%95-red.svg)
 
 # Adversarial Text Classification
 
 Code for [*Adversarial Training Methods for Semi-Supervised Text Classification*](https://arxiv.org/abs/1605.07725) and [*Semi-Supervised Sequence Learning*](https://arxiv.org/abs/1511.01432).
 
+**originated from [here](https://github.com/tensorflow/models/tree/master/research/adversarial_text)**
+
 ## Requirements
 
-* TensorFlow >= v1.3
+* TensorFlow >= v2.4
 
 ## End-to-end IMDB Sentiment Classification
 
@@ -15,20 +17,20 @@ Code for [*Adversarial Training Methods for Semi-Supervised Text Classification*
 
 ```bash
 $ wget http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz \
-    -O /tmp/imdb.tar.gz
-$ tar -xf /tmp/imdb.tar.gz -C /tmp
+    -O ./dataset/imdb.tar.gz
+$ tar -xf ./dataset/imdb.tar.gz -C /tmp
 ```
 
-The directory `/tmp/aclImdb` contains the raw IMDB data.
+The directory `./dataset/aclImdb` contains the raw IMDB data.
 
 ### Generate vocabulary
 
 ```bash
-$ IMDB_DATA_DIR=/tmp/imdb
+$ IMDB_DATA_DIR=./dataset/imdb
 $ python gen_vocab.py \
     --output_dir=$IMDB_DATA_DIR \
     --dataset=imdb \
-    --imdb_input_dir=/tmp/aclImdb \
+    --imdb_input_dir=./dataset//aclImdb \
     --lowercase=False
 ```
 
@@ -40,7 +42,7 @@ Vocabulary and frequency files will be generated in `$IMDB_DATA_DIR`.
 $ python gen_data.py \
     --output_dir=$IMDB_DATA_DIR \
     --dataset=imdb \
-    --imdb_input_dir=/tmp/aclImdb \
+    --imdb_input_dir=./dataset/aclImdb \
     --lowercase=False \
     --label_gain=False
 ```
@@ -50,7 +52,7 @@ $ python gen_data.py \
 ### Pretrain IMDB Language Model
 
 ```bash
-$ PRETRAIN_DIR=/tmp/models/imdb_pretrain
+$ PRETRAIN_DIR=./imdb_pretrain
 $ python pretrain.py \
     --train_dir=$PRETRAIN_DIR \
     --data_dir=$IMDB_DATA_DIR \
