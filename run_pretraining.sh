@@ -13,8 +13,8 @@ done
 rm xla_hlo/*/*
 
 # Basic Configurations for 
-PRETRAIN_DIR=/tmp/models/imdb_pretrain
-IMDB_DATA_DIR=/tmp/imdb
+PRETRAIN_DIR=./imdb_pretrain
+IMDB_DATA_DIR=./dataset/imdb
 
 VOCAB_SIZE=87007
 EMBEDDING_DIMS=256
