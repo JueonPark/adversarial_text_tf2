@@ -17,7 +17,7 @@ Code for [*Adversarial Training Methods for Semi-Supervised Text Classification*
 ```bash
 $ wget http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz \
     -O ./dataset/imdb.tar.gz
-$ tar -xf ./dataset/imdb.tar.gz -C /tmp
+$ tar -xf ./dataset/imdb.tar.gz -C ./dataset/
 ```
 
 The directory `./dataset/aclImdb` contains the raw IMDB data.
